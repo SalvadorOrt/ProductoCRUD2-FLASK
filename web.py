@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,redirect,url_for
 from models.Producto import Producto
 import pyodbc as sql
 cadena_conexion = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=DESKTOP-I5UU64Q\SQLEXPRESS;DATABASE=prueba_flask;UID=usuario;PWD=12345'
@@ -11,6 +11,7 @@ def ListaCategorias():
              FROM Categorias
             '''
     lista = cursor.execute(query).fetchall()
+    conexion.close()
     return lista
 @app.route('/',methods = ['GET','POST'])
 def root():
@@ -27,6 +28,13 @@ def edit(id):
         nombreREC = request.form["nombre_valor"]
         precioREC = request.form["precio_valor"]
         categoriaREC = request.form["categoria_valor"]
+        conexion = sql.connect(cadena_conexion)
+        cursor = conexion.cursor()
+        producto = Producto()
+        cursor.execute(*producto.actualizarProducto(nombreREC,precioREC,categoriaREC,id))
+        conexion.commit()
+        conexion.close()
+        return redirect(url_for('root'))
     elif request.method == 'GET':
 
         conexion = sql.connect(cadena_conexion)

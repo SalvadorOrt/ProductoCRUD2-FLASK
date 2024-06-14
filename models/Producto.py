@@ -18,4 +18,10 @@ class Producto():
                 where  Productos.producto_id = ?
                 '''
         datos  = (id,)
-        return (query,id)
+        return (query,datos)
+    def actualizarProducto(self,nombre,precio,categoria,id):
+        query = '''
+                  update Productos set nombre = ?, precio = ?, categoria_id = ? where producto_id = ?
+                '''
+        datos  = (nombre,precio,categoria,id)
+        return (query,datos)

@@ -7,13 +7,16 @@
 </head>
 <body>
     <h4>Editar {{ item }}</h4>
-    <input type="text" value="{{ nombre }}" name = "nombre_valor">
-    <input type="text" value="{{ precio }}" name = "precio_valor">
-    <select name="categoria_valor" id="">
-        <option value=" " disabled selected>Seleccione</option>
-        {% for i in lista %}
-        <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
-        {% endfor %}
-    </select>
+    <form action="" method="post">
+            <input type="text" value="{{ nombre }}" name = "nombre_valor">
+            <input type="text" value="{{ precio }}" name = "precio_valor">
+            <select name="categoria_valor" id="">
+                <option value=" " disabled selected>Seleccione</option>
+                {% for i in lista %}
+                <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
+                {% endfor %}
+            </select>
+            <button name="actualizar" type="submit">Actualizar</button>
+    </form>
 </body>
 </html>
