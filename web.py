@@ -24,7 +24,9 @@ def root():
 @app.route('/edit/<int:id>',methods = ['GET','POST'])
 def edit(id):
     if request.method == 'POST':
-        pass
+        nombreREC = request.form["nombre_valor"]
+        precioREC = request.form["precio_valor"]
+        categoriaREC = request.form["categoria_valor"]
     elif request.method == 'GET':
 
         conexion = sql.connect(cadena_conexion)
