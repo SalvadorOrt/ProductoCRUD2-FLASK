@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar {{ item }}</title>
+</head>
+<body>
+    <h4>Editar {{ item }}</h4>
+    <input type="text" value="{{ nombre }}">
+    <input type="text" value="{{ precio }}">
+    <select name="" id="">
+        <option value=" " disabled selected>Seleccione</option>
+        {% for i in lista %}
+        <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
+        {% endfor %}
+    </select>
+</body>
+</html>

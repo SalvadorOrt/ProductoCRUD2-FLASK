@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                 ID
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Categoría
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in lista %}
+            <tr>
+                <td>
+                    {{ i[0]}}
+                </td>
+                <td>
+                    {{ i[1]}}
+                </td>
+                <td>
+                    {{ i[2]}}
+                </td>
+                <td>
+                    {{ i[3]}}
+                </td>
+                <td>
+                    <a href="/edit/{{ i[0]}}">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
