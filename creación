@@ -1,0 +1,48 @@
+-- Crear la base de datos
+CREATE DATABASE prueba_flask;
+GO
+
+-- Usar la base de datos creada
+USE prueba_flask;
+GO
+
+-- Crear la tabla Categorias
+CREATE TABLE Categorias (
+    categoria_id INT IDENTITY(1,1) PRIMARY KEY,
+    nombre NVARCHAR(100) NOT NULL
+);
+
+-- Crear la tabla Productos
+CREATE TABLE Productos (
+    producto_id INT IDENTITY(1,1) PRIMARY KEY,
+    nombre NVARCHAR(100) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    categoria_id INT,
+    FOREIGN KEY (categoria_id) REFERENCES Categorias(categoria_id)
+);
+
+-- Insertar registros en la tabla Categorias
+INSERT INTO Categorias (nombre) VALUES ('Electrónica');
+INSERT INTO Categorias (nombre) VALUES ('Ropa');
+INSERT INTO Categorias (nombre) VALUES ('Hogar');
+INSERT INTO Categorias (nombre) VALUES ('Juguetes');
+INSERT INTO Categorias (nombre) VALUES ('Libros');
+INSERT INTO Categorias (nombre) VALUES ('Deportes');
+-- Insertar registros en la tabla Productos
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Televisor', 399.99, 1);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Laptop', 799.99, 1);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Camiseta', 19.99, 2);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Sofá', 499.99, 3);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Refrigerador', 899.99, 3);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Drone', 199.99, 1);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Smartphone', 699.99, 1);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Pantalones', 49.99, 2);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Vestido', 89.99, 2);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Mesa', 159.99, 3);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Lámpara', 29.99, 3);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Muñeca', 24.99, 4);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Bloques de Construcción', 39.99, 4);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Novela', 14.99, 5);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Enciclopedia', 79.99, 5);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Balón de Fútbol', 19.99, 6);
+INSERT INTO Productos (nombre, precio, categoria_id) VALUES ('Bicicleta', 299.99, 6);
