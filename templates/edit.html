@@ -7,19 +7,28 @@
     <title>Editar {{ item }}</title>
 </head>
 <body>
-    <h4>Editar {{ item }}</h4>
-    <form action="" method="post">
-            <input type="text" value="{{ nombre }}" name = "nombre_valor">
-            <input type="text" value="{{ precio }}" name = "precio_valor">
-            <select name="categoria_valor" id="">
-                <option value=" " disabled selected>Seleccione</option>
-                {% for i in lista %}
-                <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
-                {% endfor %}
-            </select>
-            <br>
-            <br>
-            <button name="actualizar" type="submit">Actualizar</button>
-    </form>
+    <div class="container">
+        <h4 class="mt-4">Editar {{ item }}</h4>
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" value="{{ nombre }}" name="nombre_valor" id="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="text" class="form-control" value="{{ precio }}" name="precio_valor" id="precio">
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría</label>
+                <select class="form-select" name="categoria_valor" id="categoria">
+                    <option value="" disabled selected>Seleccione</option>
+                    {% for i in lista %}
+                    <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button name="actualizar" type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+    </div>
 </body>
 </html>

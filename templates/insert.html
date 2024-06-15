@@ -8,22 +8,28 @@
     <title>Crear</title>
 </head>
 <body>
-    <h4>Nuevo</h4>
-    <form action="" method="post">
-        <label for="">Nombre</label>
-        <input type="text"  name = "nombre_valor">
-        <label for="">Precio</label>
-        <input type="text"  name = "precio_valor">
-        <label for="">Categoría</label>
-        <select name="categoria_valor" id="">
-            <option value=" " disabled selected>Seleccione</option>
-            {% for i in lista %}
-            <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <br>
-        <button type="submit">Agregar</button>
-    </form>
+    <div class="container">
+        <h4 class="mt-4">Nuevo</h4>
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre_valor" id="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="text" class="form-control" name="precio_valor" id="precio">
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría</label>
+                <select class="form-select" name="categoria_valor" id="categoria">
+                    <option value="" disabled selected>Seleccione</option>
+                    {% for i in lista %}
+                    <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    </div>
 </body>
 </html>
