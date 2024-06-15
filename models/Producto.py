@@ -1,6 +1,14 @@
 class Producto():
-    def __init__(self) -> None:
-        pass
+    def __init__(self,nombre = None,precio = None,categoria = None):
+        self.nombre = nombre
+        self.precio = precio
+        self.categoria = categoria
+    def insertarProducto(self):
+        query = '''
+                insert into Productos(nombre,precio,categoria_id) values(?,?,?)
+                '''
+        datos = (self.nombre,self.precio,self.categoria)
+        return(query,datos)
     def listarProducto(self):
         query = '''
                 select Productos.producto_id,Productos.nombre,Productos.precio,Categorias.nombre

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   
+    <title>Crear</title>
+</head>
+<body>
+    <h4>Nuevo</h4>
+    <form action="" method="post">
+        <label for="">Nombre</label>
+        <input type="text"  name = "nombre_valor">
+        <label for="">Precio</label>
+        <input type="text"  name = "precio_valor">
+        <label for="">Categoría</label>
+        <select name="categoria_valor" id="">
+            <option value=" " disabled selected>Seleccione</option>
+            {% for i in lista %}
+            <option value="{{ i[0] }}" {% if i[1] == categoria %} selected {% endif %}>{{ i[1] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>

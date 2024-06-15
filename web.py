@@ -48,7 +48,22 @@ def edit(id):
         print(nombre,precio)
         return render_template('edit.html',item = id,nombre = nombre,precio = precio,lista = lista,categoria = categoria)
         
-
+@app.route('/new',methods = ['GET','POST'])
+def insert():
+    if request.method == 'POST':
+        nombreREC = request.form["nombre_valor"]
+        precioREC = request.form["precio_valor"]
+        categoriaREC = request.form["categoria_valor"]
+        conexion = sql.connect(cadena_conexion)
+        cursor = conexion.cursor()
+        producto = Producto(nombreREC,precioREC,categoriaREC)
+        cursor.execute(*producto.insertarProducto())
+        conexion.commit()
+        conexion.close()
+        return redirect(url_for('root'))
+    else:
+        lista = ListaCategorias()
+        return render_template('insert.html',lista = lista)
 if __name__ == '__main__':
     app.run(debug=True)
 
