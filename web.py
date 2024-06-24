@@ -61,7 +61,7 @@ def insert():
         conexion.commit()
         conexion.close()
         return redirect(url_for('root'))
-    else:
+    elif request.method == 'GET':
         lista = ListaCategorias()
         return render_template('insert.html',lista = lista)
 if __name__ == '__main__':
